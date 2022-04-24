@@ -26,10 +26,10 @@ class LangModule(torch.nn.Module):
     trainable_models: torch.nn.ModuleDict
     heads_output_sizes: Dict[str, int] = {}
 
-    def __init__(self, model_name_or_path: str) -> None:
+    def __init__(self, model_name_or_path: str, tokenizer: Optional[PreTrainedTokenizer] = None) -> None:
         super().__init__()
         self.model_name_or_path = model_name_or_path
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
+        self.tokenizer = tokenizer if tokenizer is not None else AutoTokenizer.from_pretrained(model_name_or_path)
 
         # head_kwargs = head_kwargs if head_kwargs is not None else [{}] * len(head_types)
         # self._load_pretrained_with_heads(model_name_or_path, head_types, head_kwargs)
