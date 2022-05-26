@@ -72,4 +72,8 @@ jobs:
           pip install -e .[generative]
           pip install pytest
       - name: Unit tests
-        run: cd tests && pytest .
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 10
+          command: cd tests && pytest .
