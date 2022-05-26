@@ -30,7 +30,7 @@ setup(
     zip_safe=True,
     install_requires=[
         "torch>=1.7",
-        "transformers==4.14.0",
+        "transformers==4.14.1",
         "sentencepiece",
     ],
     test_require=[
