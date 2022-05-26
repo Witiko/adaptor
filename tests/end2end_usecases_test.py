@@ -109,5 +109,7 @@ def test_evaluation_ner():
                                              val_evaluators=evaluators)
 
     evaluation = eval_ner_objective.per_objective_log("eval")
+    assert "eval_%s_num_batches" % eval_ner_objective in evaluation
+    assert evaluation["eval_%s_num_batches" % eval_ner_objective] > 0
     for evaluator in evaluators:
         assert "eval_%s_%s" % (eval_ner_objective, evaluator) in evaluation
