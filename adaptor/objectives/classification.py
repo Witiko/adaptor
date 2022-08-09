@@ -49,6 +49,7 @@ class TokenClassification(SupervisedObjective):
             # assign current label to current wordpiece until the current_token is fully iterated-over
             current_token, current_label = tokens.pop(0), labels.pop(0)  # noqa F401: current_token unused
             for wpiece_id, wpiece in zip(wpiece_ids, wordpieces):
+                assert tokens, (text, text_labels)
                 next_token = tokens[0]
                 if next_token.startswith(wpiece):
                     # if the next token starts with a current wordpiece, move to the next token + label
